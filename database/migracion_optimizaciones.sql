@@ -91,7 +91,7 @@ BEGIN
         SELECT r.tecnico_id,
                p.nombre_completo AS nombre,
                ROUND(AVG(er.valor)::numeric, 2) AS promedio,
-               COUNT(*) AS total_encuestas
+               COUNT(DISTINCT es.id) AS total_encuestas
         FROM encuesta_respuestas er
         JOIN encuestas_satisfaccion es ON er.encuesta_id = es.id
         JOIN reportes r ON es.reporte_id = r.id
